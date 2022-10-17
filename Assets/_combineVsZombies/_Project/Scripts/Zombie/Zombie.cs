@@ -12,7 +12,11 @@ public class Zombie : MonoBehaviour
 
     private int _zombieTypeIndex = 0;
 
-
+    public void SetZombieType(int index)
+    {
+        _zombieTypeIndex = index;
+        _zombieTypes[_zombieTypeIndex].gameObject.SetActive(true);
+    }
     public int GetMassOfZombie()
     {
         return _zombieTypes[_zombieTypeIndex].Mass;
