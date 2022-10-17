@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class Saw : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private CollisionTrigered _collisionTrigered;
+
+
+
+    private void OnEnable()
     {
-        print("trigeg");
+        _collisionTrigered.Trigered += CheckCollider;
+    }
+    private void OnDisable()
+    {
+        _collisionTrigered.Trigered -= CheckCollider;
+    }
 
-        if (other.TryGetComponent(out Zombie zombie))
+
+    private void CheckCollider(Collider collider)
+    {
+        if (collider.TryGetComponent(out ZombieTrigger zombie))
         {
-            zombie.gameObject.SetActive(false);
-            print("trigeg");
-
+            zombie.Zombie.MoveZombieTo(_collisionTrigered.transform);
+            zombie.Zombie.DisactivateZombie(1);
+            print(zombie.Zombie.GetMassOfZombie() + " is mass of zombie");
         }
     }
 }

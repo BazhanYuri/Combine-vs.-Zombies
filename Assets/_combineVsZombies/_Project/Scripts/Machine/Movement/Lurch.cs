@@ -41,7 +41,6 @@ public class Lurch : MonoBehaviour
     private void Turning()
     {
         ClampRotation();
-        print(_lurchIndex);
         _visual.rotation =  Quaternion.Lerp(_visual.rotation, Quaternion.Euler(0, _lurchIndex , 0), _lurchSpeed * Time.deltaTime);
     }
     private void ClampRotation()

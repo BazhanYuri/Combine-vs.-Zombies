@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4705179659374113287}
   - component: {fileID: 4705179659374113286}
   - component: {fileID: 4705179659374113285}
-  - component: {fileID: 613179528}
+  - component: {fileID: 102366233881147177}
+  - component: {fileID: 1178611811281153262}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: StandartZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 84599a683e4eab84eb461ed19daa6efd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &613179528
+--- !u!114 &102366233881147177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,9 +106,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4705179659374113291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622650197fdfc8a4d8b98a764afbb369, type: 3}
+  m_Script: {fileID: 11500000, guid: 8adc8189372808446bf7102e525ad75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _zombie: {fileID: 2288148296490229984}
+--- !u!114 &1178611811281153262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705179659374113291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7de76d7ea793f5469ff45d4ee732644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mass: 45
 --- !u!1 &4705179659486251405
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,8 +164,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4705179659712542779}
-  - component: {fileID: 7188311804717428299}
-  - component: {fileID: 8858426226276708997}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -173,31 +186,6 @@ Transform:
   m_Father: {fileID: 4705179659486251406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7188311804717428299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705179659712542778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622650197fdfc8a4d8b98a764afbb369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &8858426226276708997
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705179659712542778}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4705179660767847647
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +195,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4705179660767847640}
-  - component: {fileID: 4705179660767847641}
   m_Layer: 0
   m_Name: Mechanics
   m_TagString: Untagged
@@ -225,22 +212,103 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7881025795338749808}
+  - {fileID: 5320608950115306491}
   m_Father: {fileID: 4705179659486251406}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4705179660767847641
+--- !u!1 &5128973410080590563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7881025795338749808}
+  - component: {fileID: 2288148296490229984}
+  m_Layer: 0
+  m_Name: Zombie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7881025795338749808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128973410080590563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4705179660767847640}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2288148296490229984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705179660767847647}
+  m_GameObject: {fileID: 5128973410080590563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622650197fdfc8a4d8b98a764afbb369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visual: {fileID: 4705179659712542779}
+  _forwardMovement: {fileID: 3734149002129545975}
+  _zombieInfoConteiner: {fileID: 1178611811281153262}
+  _zombieTypes:
+  - {fileID: 1178611811281153262}
+--- !u!1 &6242197760967421476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5320608950115306491}
+  - component: {fileID: 3734149002129545975}
+  m_Layer: 0
+  m_Name: ForwardMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5320608950115306491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242197760967421476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4705179660767847640}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3734149002129545975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6242197760967421476}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cb0fab0999206644898695182e999d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.2
-  _visual: {fileID: 4705179659712542779}
+  _speed: 1
+  _visual: {fileID: 4705179659486251406}
   _moveVector: {x: 0, y: 0, z: -1}
