@@ -13,16 +13,18 @@ public class ZombiePool : MonoBehaviour
 
 
 
-    public void Take()
+    public Zombie Take()
     {
         for (int i = 0; i < _zombiePool.Count; i++)
         {
             if (_zombiePool[i].gameObject.active == false)
             {
                 _zombiePool[i].gameObject.SetActive(true);
-                break;
+                _zombiePool[i].transform.parent = _zomiesRoot;
+                return _zombiePool[i];
             }
         }
+        return null;
     }
 
     private void Start()
