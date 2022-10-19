@@ -8,16 +8,16 @@ public class Improvement : MonoBehaviour
     [SerializeField] private int _standartSawPower; //kg
     [SerializeField] private int _improveSawIndex;
     [Space]
-    [SerializeField] private int _standartCoolRate; //kgPerSecond
-    [SerializeField] private int _improveCoolRateIndex; 
+    [SerializeField] private float _standartCoolRate; //kgPerSecond
+    [SerializeField] private float _improveCoolRateIndex; 
 
     private float _currentSpeed;
     private int _currentSawPower;
-    private int _currentCoolRate;
+    private float _currentCoolRate;
 
     public float CurrentSpeed { get => _currentSpeed;}
     public int CurrentSawPower { get => _currentSawPower; }
-    public int CurrentCoolRate { get => _currentCoolRate; }
+    public float CurrentCoolRate { get => _currentCoolRate; }
 
     private void OnEnable()
     {

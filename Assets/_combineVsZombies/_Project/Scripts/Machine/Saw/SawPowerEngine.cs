@@ -3,19 +3,32 @@ using UnityEngine;
 
 public class SawPowerEngine : MonoBehaviour
 {
+    [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerWeight;
+    [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerTotalWeight;
+    [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerZombieCount;
     [SerializeField] private Improvement _improvement;
 
 
-    private int _currentMassInSaw = 0;
+    private float _currentMassInSaw = 0;
+    private int _zombieCount = 0;
+    private int _totalZombieMass = 0;
+
     public void AddZombieToCut(Zombie zombie)
     {
         _currentMassInSaw += zombie.GetMassOfZombie();
-
+        _totalZombieMass += zombie.GetMassOfZombie();
+        _zombieCount++;
         if (_currentMassInSaw >= _improvement.CurrentSawPower)
         {
             Debug.Log("<color=red>Overload</color>");
             Application.Quit();
         }
+        else
+        {
+            
+        }
+        _textUpdatedTriggerZombieCount.InvokeUpdated(_zombieCount);
+        _textUpdatedTriggerTotalWeight.InvokeUpdated(_totalZombieMass);
     }
 
 
@@ -30,10 +43,10 @@ public class SawPowerEngine : MonoBehaviour
         {
             if (_currentMassInSaw > 0)
             {
-               
-                _currentMassInSaw -= _improvement.CurrentCoolRate;
+                _currentMassInSaw -= (_improvement.CurrentCoolRate / 10);
             }
-            yield return new WaitForSecondsRealtime(1);
+            _textUpdatedTriggerWeight.InvokeUpdated((int)_currentMassInSaw);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 }
