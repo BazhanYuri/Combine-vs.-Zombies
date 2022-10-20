@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/_combineVsZombies/_Project/Scene/MainScene.unity
+    guid: 8648f0f20a24d7f4eb85a17ef838318c
   m_configObjects: {}
