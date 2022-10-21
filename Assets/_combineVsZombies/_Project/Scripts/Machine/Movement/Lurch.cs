@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Lurch : MonoBehaviour
 {
+    [SerializeField] private Machine _machine;
     [SerializeField] private Transform _visual;
     [SerializeField] private SideMovement _sideMovement;
     [SerializeField] private Clamps _clamps;
@@ -12,16 +13,20 @@ public class Lurch : MonoBehaviour
 
     private float _lurchIndex;
     private bool _isTurning;
+    private bool _isCanTurn = true;
 
 
     private void OnEnable()
     {
         _sideMovement.moved += Lurching;
+        _machine.Death.onDead += StopTurning;
     }
     private void OnDisable()
     {
         _sideMovement.moved -= Lurching;
+        _machine.Death.onDead -= StopTurning;
     }
+
     private void Lurching(float velocity)
     {
         if (velocity != 0)
@@ -32,11 +37,17 @@ public class Lurch : MonoBehaviour
         }
         _lurchIndex = 0;
     }
-
+    private void StopTurning()
+    {
+        _isCanTurn = false;
+    }
 
     private void Update()
     {
-        Turning();
+        if (_isCanTurn == true)
+        {
+            Turning();
+        }
     }
     private void Turning()
     {

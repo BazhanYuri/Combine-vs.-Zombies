@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class CollisionTrigered : MonoBehaviour
 {
-    public event Action<Collider> Trigered;
+    
+        public event Action Trigered;
 
 
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Trigered?.Invoke(other);
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            Trigered?.Invoke();
+        }
 }

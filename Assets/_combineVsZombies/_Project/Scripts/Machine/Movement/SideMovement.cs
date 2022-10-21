@@ -13,7 +13,7 @@ public class SideMovement : MonoBehaviour
 {
     public event Action<float> moved;
 
-
+    [SerializeField] private Machine _machine;
     [SerializeField] private Clamps _clamps;
     [SerializeField] private float _speed;
     [SerializeField] private float _tapSpeedIndex;
@@ -24,15 +24,20 @@ public class SideMovement : MonoBehaviour
     private float _pointToMove;
 
 
-
+    public void StopMove()
+    {
+        _speed = 0;
+    }
 
     private void OnEnable()
     {
         _screenTapHandler.ScreenTouchedCallback += MoveSides;
+        _machine.Death.onDead += StopMove;
     }
     private void OnDisable()
     {
         _screenTapHandler.ScreenTouchedCallback -= MoveSides;
+        _machine.Death.onDead -= StopMove;
     }
     private void Update()
     {

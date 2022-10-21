@@ -7,6 +7,8 @@ public class SawPowerEngine : MonoBehaviour
     [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerWeightPercent;
     [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerTotalWeight;
     [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerZombieCount;
+
+    [SerializeField] private Death _death;
     [SerializeField] private Improvement _improvement;
 
 
@@ -21,7 +23,14 @@ public class SawPowerEngine : MonoBehaviour
         get;
         set;
     }
-
+    private void OnEnable()
+    {
+        _death.onDead += StopSaw;
+    }
+    private void OnDisable()
+    {
+        _death.onDead -= StopSaw;
+    }
 
 
     public void AddZombieToCut(Zombie zombie)
@@ -29,14 +38,8 @@ public class SawPowerEngine : MonoBehaviour
         _currentMassInSaw += zombie.GetMassOfZombie();
         _totalZombieMass += zombie.GetMassOfZombie();
         _zombieCount++;
-        if (_currentMassInSaw >= _improvement.CurrentSawPower)
-        {
-            Debug.Log("<color=red>Overload</color>");
-        }
-        else
-        {
-            
-        }
+        
+        
         _textUpdatedTriggerZombieCount.InvokeUpdated(_zombieCount);
         _textUpdatedTriggerTotalWeight.InvokeUpdated(_totalZombieMass);
     }
@@ -57,7 +60,10 @@ public class SawPowerEngine : MonoBehaviour
             }
             _textUpdatedTriggerWeight.InvokeUpdated((int)_currentMassInSaw);
             _textUpdatedTriggerWeightPercent.InvokeUpdated(CalculatePerentageOfOverriding());
-            
+            if (_currentMassInSaw >= _improvement.CurrentSawPower)
+            {
+                _death.Dead();
+            }
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
@@ -65,5 +71,9 @@ public class SawPowerEngine : MonoBehaviour
     {
         PercentageOfSawWeightFull = (int)((_currentMassInSaw / (float)_improvement.CurrentSawPower) * 100);
         return PercentageOfSawWeightFull;
+    }
+    private void StopSaw()
+    {
+        StopAllCoroutines();
     }
 }

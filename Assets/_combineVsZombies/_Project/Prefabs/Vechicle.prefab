@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2110260677}
   - component: {fileID: 2110260679}
+  - component: {fileID: 2110260680}
   m_Layer: 0
   m_Name: Saw
   m_TagString: Untagged
@@ -44,7 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sawPowerEngine: {fileID: 8305156599120070297}
-  _collisionTrigered: {fileID: 468968603075825059}
+  _collisionTrigered: {fileID: 414973182}
+--- !u!54 &2110260680
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110260676}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1217078291272063547
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +120,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4029733101848210901}
+  - {fileID: 1824493157460431201}
   m_Father: {fileID: 7331903179797005847}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _improvement: {fileID: 0}
-  _forwardMovement: {fileID: 7331903181614306562}
+  _forwardMovement: {fileID: 0}
+  _death: {fileID: 6312680533600741127}
 --- !u!1 &2932332365477823609
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,8 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textUpdatedTriggerWeight: {fileID: 0}
+  _textUpdatedTriggerWeightPercent: {fileID: 0}
   _textUpdatedTriggerTotalWeight: {fileID: 0}
   _textUpdatedTriggerZombieCount: {fileID: 0}
+  _death: {fileID: 6312680533600741127}
   _improvement: {fileID: 0}
 --- !u!1 &5343435986287168558
 GameObject:
@@ -273,7 +294,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bec19a7969a1dd4ca300fafeb25fe73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zoneCollision: {fileID: 1681541841360279207}
+  _zoneCollision: {fileID: 0}
+--- !u!1 &5862545098039880461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1824493157460431201}
+  - component: {fileID: 6312680533600741127}
+  m_Layer: 0
+  m_Name: Death
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1824493157460431201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862545098039880461}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7594671329935229172}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6312680533600741127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862545098039880461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152d6354eb75b14418ccf218a4c3d0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCanDead: 1
 --- !u!1 &6129404009149257291
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +398,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4bd2f4c0721af834a8cf12269e89ea95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -414,7 +479,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f60587942692046499e13c75bdc1f6a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -620,8 +685,8 @@ GameObject:
   - component: {fileID: 7331903180560717427}
   - component: {fileID: 7331903180560717428}
   - component: {fileID: 8073488053876304507}
-  - component: {fileID: 468968603075825059}
   - component: {fileID: 4381438825977617680}
+  - component: {fileID: 414973182}
   m_Layer: 0
   m_Name: Saw
   m_TagString: Untagged
@@ -671,7 +736,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4bd2f4c0721af834a8cf12269e89ea95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -707,18 +772,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &468968603075825059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7331903180560717431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b734cb2282553074b9b78bbabceced89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &4381438825977617680
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -735,6 +788,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &414973182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331903180560717431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed8cd6a61a60e74f907e9165e6f626a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7331903180608084843
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163185711bf273b45a959c4820d00c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _machine: {fileID: 6068392357388864684}
   _clamps:
     min: -3.5
     max: 3.5
@@ -955,7 +1021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7331903181614306563}
-  - component: {fileID: 7331903181614306562}
+  - component: {fileID: 1996128877672044022}
   m_Layer: 0
   m_Name: ForwardMovement
   m_TagString: Untagged
@@ -977,7 +1043,7 @@ Transform:
   m_Father: {fileID: 7331903181589447130}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7331903181614306562
+--- !u!114 &1996128877672044022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -986,12 +1052,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7331903181614306564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cb0fab0999206644898695182e999d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 38f5e06f90d369b4f9edf4d63f576abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 0
   _visual: {fileID: 7331903180613117703}
   _moveVector: {x: 0, y: 0, z: 1}
+  _machine: {fileID: 6068392357388864684}
 --- !u!1 &8382050327527846520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ca95b01c4360f4aaca1e87c750ace9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sawPowerEngine: {fileID: 8305156599120070297}
   _sawVisual: {fileID: 8578224073836377694}
   _machine: {fileID: 6068392357388864684}
-  _rotationVector: {x: 0, y: 1, z: 0}
-  _standartSpeed: 5
+  _rotationVector: {x: 1, y: 0, z: 0}
+  _standartSpeed: 0.5

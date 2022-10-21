@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisactivateZone : MonoBehaviour
 {
-    [SerializeField] private CollisionTrigered _zoneCollision;
+    [SerializeField] private ColliderCollisionTrigered _zoneCollision;
 
 
 

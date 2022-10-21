@@ -3,7 +3,7 @@ using UnityEngine;
 public class Saw : MonoBehaviour
 {
     [SerializeField] private SawPowerEngine _sawPowerEngine;
-    [SerializeField] private CollisionTrigered _collisionTrigered;
+    [SerializeField] private ColliderCollisionTrigered _collisionTrigered;
 
 
 

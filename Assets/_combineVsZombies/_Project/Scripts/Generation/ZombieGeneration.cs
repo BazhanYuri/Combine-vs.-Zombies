@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ZombieGeneration : MonoBehaviour
 {
+    [SerializeField] private Machine _machine;
     [SerializeField] private PassedDistanceManager _passedDistanceManager;
     [SerializeField] private ZombieInfoManager _zombieInfoManager;
     [SerializeField] private ZombiePool _zombiePool;
@@ -16,6 +17,19 @@ public class ZombieGeneration : MonoBehaviour
 
 
 
+
+    private void OnEnable()
+    {
+        _machine.Death.onDead += StopSpawning;
+    }
+    private void OnDisable()
+    {
+        _machine.Death.onDead -= StopSpawning;
+    }
+    private void StopSpawning()
+    {
+        StopAllCoroutines();
+    }
     private void Start()
     {
         StartCoroutine(SpawnZombie());
