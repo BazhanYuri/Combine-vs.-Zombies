@@ -12,8 +12,8 @@ public class Zombie : MonoBehaviour
 
     private int _zombieTypeIndex = 0;
 
+    public ForwardMovement ForwardMovement { get => _forwardMovement;}
 
-    
     public void SetZombieType(int index)
     {
         HideAllZombies();

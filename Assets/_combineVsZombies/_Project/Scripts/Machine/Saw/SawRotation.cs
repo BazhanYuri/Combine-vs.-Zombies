@@ -12,7 +12,10 @@ public class SawRotation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _sawVisual.Rotate(_rotationVector * CalculateSpeed());
+        if (_machine.Death.IsDead == false)
+        {
+            _sawVisual.Rotate(_rotationVector * CalculateSpeed());
+        }
     }
     private float CalculateSpeed()
     {

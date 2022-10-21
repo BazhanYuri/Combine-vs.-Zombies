@@ -7,7 +7,6 @@ public class ForwardMovement : MonoBehaviour
     [SerializeField] private Vector3 _moveVector;
 
 
-
     public void SetSpeed(float speed)
     {
         _speed = speed;

@@ -23,5 +23,9 @@ public class DisactivateZone : MonoBehaviour
         {
             zombie.Zombie.gameObject.SetActive(false);
         }
+        if (obj.TryGetComponent(out Obstacle obstacle))
+        {
+            obstacle.gameObject.SetActive(false);
+        }
     }
 }
