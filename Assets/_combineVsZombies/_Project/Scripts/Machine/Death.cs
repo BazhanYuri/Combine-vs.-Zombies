@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
+    [SerializeField] private GameManager _gameManager;
     [SerializeField] private bool _isCanDead; 
     public event Action onDead;
 
@@ -15,7 +16,8 @@ public class Death : MonoBehaviour
         if (_isCanDead == true)
         {
             onDead?.Invoke();
-            _isDead = true;
+            _gameManager.LevelFailed(false);
+             _isDead = true;
         }
     }
 }

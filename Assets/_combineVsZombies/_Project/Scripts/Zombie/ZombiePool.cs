@@ -19,7 +19,6 @@ public class ZombiePool : MonoBehaviour
         {
             if (_zombiePool[i].gameObject.active == false)
             {
-                _zombiePool[i].
                 _zombiePool[i].gameObject.SetActive(true);
                 _zombiePool[i].transform.parent = _zomiesRoot;
                 return _zombiePool[i];
