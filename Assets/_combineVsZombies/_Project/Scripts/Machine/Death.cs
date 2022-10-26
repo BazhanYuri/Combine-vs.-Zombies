@@ -16,7 +16,7 @@ public class Death : MonoBehaviour
         if (_isCanDead == true)
         {
             onDead?.Invoke();
-            _gameManager.LevelFailed(false);
+            _gameManager.LevelCompleted();
              _isDead = true;
         }
     }

@@ -7,5 +7,5 @@ public class LevelPassedInfo : ScriptableObject
     public float costForDistance;
 
 
-    
+
 }

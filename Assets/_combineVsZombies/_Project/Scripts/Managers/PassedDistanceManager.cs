@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PassedDistanceManager : MonoBehaviour
 {
-    [SerializeField] private LevelPassedInfo _levelPassedInfo;
+    [SerializeField] private MoneyManager _moneyManager;
     [SerializeField] private Death _death;
     [SerializeField] private Transform _machineVisual;
     [SerializeField] private TextUpdatedTrigger _textUpdatedTrigger;
@@ -29,6 +29,6 @@ public class PassedDistanceManager : MonoBehaviour
     }
     private void SetPassedDistance()
     {
-        _levelPassedInfo.passedDistance = _passedDistance;
+        _moneyManager.PassedDistance = _passedDistance;
     }
 }

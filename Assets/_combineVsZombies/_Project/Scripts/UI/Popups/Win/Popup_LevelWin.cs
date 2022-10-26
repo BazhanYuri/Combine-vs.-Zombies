@@ -47,6 +47,7 @@ public class Popup_LevelWin : PopupBaseWithCollectable
     #region ButtonCallbacks
     private void nextLevel()
     {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         sendReward();
     }
 

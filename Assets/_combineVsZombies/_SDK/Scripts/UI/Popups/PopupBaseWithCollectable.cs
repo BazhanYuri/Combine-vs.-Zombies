@@ -25,7 +25,7 @@ public class PopupBaseWithCollectable : PopupBase
     #region Init
     protected virtual void OnEnable()
     {
-        m_CollectableAmountDisplay.text = $"+ {m_RewardAmount}";
+        //m_CollectableAmountDisplay.text = $"+ {m_RewardAmount}";
     }
     #endregion
 

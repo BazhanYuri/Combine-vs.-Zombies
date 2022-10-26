@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SawPowerEngine : MonoBehaviour
 {
+    [SerializeField] private MoneyManager _moneyManager;
     [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerWeight;
     [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerWeightPercent;
     [SerializeField] private TextUpdatedTrigger _textUpdatedTriggerTotalWeight;
@@ -75,5 +76,7 @@ public class SawPowerEngine : MonoBehaviour
     private void StopSaw()
     {
         StopAllCoroutines();
+        _moneyManager.KilledZombies = _zombieCount;
+        _moneyManager.KilledZombiesMass = _totalZombieMass;
     }
 }
