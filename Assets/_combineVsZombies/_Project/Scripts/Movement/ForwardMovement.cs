@@ -7,18 +7,28 @@ public class ForwardMovement : MonoBehaviour
     [SerializeField] private Vector3 _moveVector;
 
 
+
+    private bool _isManageToMove = false;
     public void SetSpeed(float speed)
     {
         _speed = speed;
     }
     public void StopMove()
     {
-        _speed = 0;
+        _isManageToMove = false;
+    }
+    public void StartMove()
+    {
+        _isManageToMove = true;
     }
 
     
     private void Update()
     {
+        if (_isManageToMove == false)
+        {
+            return;
+        }
 
         MoveForward();
     }

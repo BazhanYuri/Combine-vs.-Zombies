@@ -22,11 +22,17 @@ public class SideMovement : MonoBehaviour
     [SerializeField] private ScreenTapHandler _screenTapHandler;
 
     private float _pointToMove;
-
+    private bool _isManageToMove = false;
 
     public void StopMove()
     {
-        _speed = 0;
+        _isManageToMove = false;
+
+    }
+    public void StartMove()
+    {
+        _isManageToMove = true;
+        _pointToMove = 0;
     }
 
     private void OnEnable()
@@ -41,6 +47,11 @@ public class SideMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (_isManageToMove == false)
+        {
+            return;
+        }
+
         MoveVisual();
     }
     private void MoveSides(SideTouched sideTouched)
