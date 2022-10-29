@@ -10,6 +10,10 @@ public class SawRotation : MonoBehaviour
     [SerializeField] private float _standartSpeed;
 
 
+    private float _currentSawPower;
+
+    public float CurrentSawPower {set => _currentSawPower = value; }
+
     private void FixedUpdate()
     {
         if (_machine.Death.IsDead == false)
@@ -19,7 +23,7 @@ public class SawRotation : MonoBehaviour
     }
     private float CalculateSpeed()
     {
-        float speed = _standartSpeed * (_machine.Improvement.CurrentSawPower * 0.1f) * ((100 - _sawPowerEngine.PercentageOfSawWeightFull) / 100f); 
+        float speed = _standartSpeed * (_currentSawPower * 0.1f) * ((100 - _sawPowerEngine.PercentageOfSawWeightFull) / 100f); 
         if (speed < 0)
         {
             speed = 0;

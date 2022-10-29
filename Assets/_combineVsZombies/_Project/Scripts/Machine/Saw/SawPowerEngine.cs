@@ -16,14 +16,18 @@ public class SawPowerEngine : MonoBehaviour
     private float _currentMassInSaw = 0;
     private int _zombieCount = 0;
     private int _totalZombieMass = 0;
-    
 
+    private float _currentCoolRate;
+    private float _currentSawPower;
 
     public int PercentageOfSawWeightFull
     {
         get;
         set;
     }
+    public float CurrentCoolRate { set => _currentCoolRate = value; }
+    public float CurrentSawPower { set => _currentSawPower = value; }
+
     private void OnEnable()
     {
         _death.onDead += StopSaw;
@@ -57,11 +61,11 @@ public class SawPowerEngine : MonoBehaviour
         {
             if (_currentMassInSaw > 0)
             {
-                _currentMassInSaw -= (_improvement.CurrentCoolRate / 10);
+                _currentMassInSaw -= (_currentCoolRate / 10);
             }
             _textUpdatedTriggerWeight.InvokeUpdated((int)_currentMassInSaw);
             _textUpdatedTriggerWeightPercent.InvokeUpdated(CalculatePerentageOfOverriding());
-            if (_currentMassInSaw >= _improvement.CurrentSawPower)
+            if (_currentMassInSaw > _currentSawPower)
             {
                 _death.Dead();
             }
@@ -70,7 +74,7 @@ public class SawPowerEngine : MonoBehaviour
     }
     private int CalculatePerentageOfOverriding()
     {
-        PercentageOfSawWeightFull = (int)((_currentMassInSaw / (float)_improvement.CurrentSawPower) * 100);
+        PercentageOfSawWeightFull = (int)((_currentMassInSaw / (float)_currentSawPower) * 100);
         return PercentageOfSawWeightFull;
     }
     private void StopSaw()

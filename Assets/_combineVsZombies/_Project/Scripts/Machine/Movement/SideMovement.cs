@@ -45,6 +45,7 @@ public class SideMovement : MonoBehaviour
     {
         if (_isManageToMove == false)
         {
+
             return;
         }
 
