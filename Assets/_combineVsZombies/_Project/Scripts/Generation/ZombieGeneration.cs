@@ -21,19 +21,23 @@ public class ZombieGeneration : MonoBehaviour
     private void OnEnable()
     {
         _machine.Death.onDead += StopSpawning;
+        _machine.GameStarter.GameStarted += StartSpawn;
     }
     private void OnDisable()
     {
         _machine.Death.onDead -= StopSpawning;
+        _machine.GameStarter.GameStarted -= StartSpawn;
+
     }
     private void StopSpawning()
     {
         StopAllCoroutines();
     }
-    private void Start()
+    private void StartSpawn()
     {
         StartCoroutine(SpawnZombie());
     }
+    
     private IEnumerator SpawnZombie()
     {
         while (true)

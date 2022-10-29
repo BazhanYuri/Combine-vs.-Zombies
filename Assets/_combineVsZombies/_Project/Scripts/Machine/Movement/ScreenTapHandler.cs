@@ -12,12 +12,20 @@ public class ScreenTapHandler : MonoBehaviour
 {
     public event Action<SideTouched> ScreenTouchedCallback;
 
+    private bool _isCanTurn = false;
+
+    public void StartMove()
+    {
+        _isCanTurn = true;
+    }
 
 
-
-    
     private void Update()
     {
+        if (_isCanTurn == false)
+        {
+            return;
+        }
         CheckInput();
     }
     private void CheckInput()

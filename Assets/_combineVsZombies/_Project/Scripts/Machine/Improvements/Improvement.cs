@@ -1,28 +1,44 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Improvement : MonoBehaviour
 {
-    [SerializeField] private float _standartSpeed; //metersPerSecond
-    [SerializeField] private float _improveSpeedIndex; 
-    [Space]
-    [SerializeField] private int _standartSawPower; //kg
-    [SerializeField] private int _improveSawIndex;
-    [Space]
+    [Tooltip("Meters per second")]
+    [SerializeField] private float _standartSpeed;
+    [Tooltip("In kilograms")]
+    [SerializeField] private float _standartSawPower; //kg
+    [Tooltip("In kilograms per second")]
     [SerializeField] private float _standartCoolRate; //kgPerSecond
-    [SerializeField] private float _improveCoolRateIndex; 
+    [Space]
+    [SerializeField][ReadOnly] private Improver _improver;
+
+    [Button]
+    private void SetRefs()
+    {
+        _improver = GetComponent<Improver>();
+    }
+
 
     private float _currentSpeed;
-    private int _currentSawPower;
+    private float _currentSawPower;
     private float _currentCoolRate;
 
     public float CurrentSpeed { get => _currentSpeed;}
-    public int CurrentSawPower { get => _currentSawPower; }
+    public float CurrentSawPower { get => _currentSawPower; }
     public float CurrentCoolRate { get => _currentCoolRate; }
 
     private void OnEnable()
     {
-        _currentSpeed = _standartSpeed;
-        _currentSawPower = _standartSawPower;
-        _currentCoolRate = _standartCoolRate;
+        CalculateImprovementsFromImprover();
+        print("After calculating improving: ");
+        print("Speed " + _currentSpeed);
+        print("Saw Power " + _currentSawPower);
+        print("Cool rate " + _currentCoolRate);
+    }
+    private void CalculateImprovementsFromImprover()
+    {
+        _currentSpeed = _improver.CalculateValue(ImproveType.Engine, _standartSpeed);
+        _currentSawPower = _improver.CalculateValue(ImproveType.Engine, _standartSawPower);
+        _currentCoolRate = _improver.CalculateValue(ImproveType.Engine, _standartCoolRate);
     }
 }
