@@ -59,9 +59,14 @@ public class SawPowerEngine : MonoBehaviour
     {
         while (true)
         {
+            
             if (_currentMassInSaw > 0)
             {
                 _currentMassInSaw -= (_currentCoolRate / 10);
+            }
+            else if (_currentMassInSaw < 0)
+            {
+                _currentMassInSaw = 0;
             }
             _textUpdatedTriggerWeight.InvokeUpdated((int)_currentMassInSaw);
             _textUpdatedTriggerWeightPercent.InvokeUpdated(CalculatePerentageOfOverriding());

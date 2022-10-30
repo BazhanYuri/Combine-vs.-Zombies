@@ -14,6 +14,10 @@ public class ObstacleGenerator : MonoBehaviour
 
 
 
+    public void ConnectSpawnSpeedWithVechicleSpeed(float percantageOfImprovenesSpeed)
+    {
+        _timeToSpawnObstacle /= percantageOfImprovenesSpeed;
+    }
     private void OnEnable()
     {
         _machine.Death.onDead += StopSpawning;

@@ -17,7 +17,10 @@ public class ZombieGeneration : MonoBehaviour
 
 
 
-
+    public void ConnectSpawnSpeedWithVechicleSpeed(float percantageOfImprovenesSpeed)
+    {
+        _timeToSpawnZombies /= percantageOfImprovenesSpeed;
+    }
     private void OnEnable()
     {
         _machine.Death.onDead += StopSpawning;
