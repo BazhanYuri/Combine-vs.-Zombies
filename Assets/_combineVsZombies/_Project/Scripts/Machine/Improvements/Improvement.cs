@@ -42,8 +42,11 @@ public class Improvement : MonoBehaviour
     private void CalculateImprovementsFromImprover()
     {
         _currentSpeed = _improver.CalculateValue(ImproveType.Engine, _standartSpeed);
+        print("Speed is " + _currentSpeed);
         _currentSawPower = _improver.CalculateValue(ImproveType.Saw, _standartSawPower);
+        print("SawPower is " + _currentSawPower);
         _currentCoolRate = _improver.CalculateValue(ImproveType.Cooldown, _standartCoolRate);
+        print("CoolRate is " + _currentCoolRate);
 
         _machine.SawRotation.CurrentSawPower = _currentSawPower;
         _machine.SawPowerEngine.CurrentCoolRate = _currentCoolRate;

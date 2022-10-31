@@ -24,8 +24,12 @@ public class PassedDistanceManager : MonoBehaviour
     }
     private void Update()
     {
-        _passedDistance = (int)_machineVisual.position.z;
-        _textUpdatedTrigger.InvokeUpdated(_passedDistance);
+        if ((int)_machineVisual.position.z > 0)
+        {
+            _passedDistance = (int)_machineVisual.position.z;
+            _textUpdatedTrigger.InvokeUpdated(_passedDistance);
+        }
+        
     }
     private void SetPassedDistance()
     {
