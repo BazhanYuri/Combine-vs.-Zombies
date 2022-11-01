@@ -24,6 +24,11 @@ public class SideMovement : MonoBehaviour
     private float _pointToMove;
     private bool _isManageToMove = true;
 
+
+    public void ConnectFormwardSpeedWithSidesSpeed(float percantage)
+    {
+        _speed *= percantage;
+    }
     public void StopMove()
     {
         _isManageToMove = false;
@@ -45,7 +50,6 @@ public class SideMovement : MonoBehaviour
     {
         if (_isManageToMove == false)
         {
-
             return;
         }
 

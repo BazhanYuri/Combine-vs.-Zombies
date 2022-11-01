@@ -62,5 +62,6 @@ public class Improvement : MonoBehaviour
 
         _obstacleGenerator.ConnectSpawnSpeedWithVechicleSpeed(percentageOfImprovedSpeed);
         _zombieGeneration.ConnectSpawnSpeedWithVechicleSpeed(percentageOfImprovedSpeed);
+        _machine.SideMovement.ConnectFormwardSpeedWithSidesSpeed(percentageOfImprovedSpeed);
     }
 }

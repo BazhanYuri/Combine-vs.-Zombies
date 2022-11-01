@@ -5,6 +5,7 @@ public class Machine : MonoBehaviour
     [SerializeField] private GameStarter _gameStarter;
     [SerializeField] private Improvement _improvement;
     [SerializeField] private ForwardMovement _forwardMovement;
+    [SerializeField] private SideMovement _sideMovement;
     [SerializeField] private SawRotation _sawRotation;
     [SerializeField] private SawPowerEngine _sawPowerEngine;
     [SerializeField] private ScreenTapHandler _screenTapHandler;
@@ -16,6 +17,7 @@ public class Machine : MonoBehaviour
     public SawRotation SawRotation { get => _sawRotation;}
     public ForwardMovement ForwardMovement { get => _forwardMovement;}
     public SawPowerEngine SawPowerEngine { get => _sawPowerEngine;}
+    public SideMovement SideMovement { get => _sideMovement;}
 
     private void OnEnable()
     {

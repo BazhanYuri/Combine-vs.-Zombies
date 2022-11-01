@@ -4,7 +4,9 @@ using UnityEngine;
 public class Death : MonoBehaviour
 {
     [SerializeField] private GameManager _gameManager;
-    [SerializeField] private bool _isCanDead; 
+    [SerializeField] private bool _isCanDead;
+    [SerializeField] private Transform _gameProcessUI;
+
     public event Action onDead;
 
     private bool _isDead = false;
@@ -18,6 +20,7 @@ public class Death : MonoBehaviour
             onDead?.Invoke();
             _gameManager.LevelCompleted();
              _isDead = true;
+            _gameProcessUI.gameObject.SetActive(false);
         }
     }
 }

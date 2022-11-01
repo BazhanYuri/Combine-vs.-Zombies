@@ -6,6 +6,7 @@ public class GameStarter : MonoBehaviour
 {
     [SerializeField] private Transform _mainMenuCamera;
     [SerializeField] private Button _startGameButton;
+    [SerializeField] private Transform _gameProcessUI;
 
     public event Action GameStarted;
 
@@ -24,5 +25,6 @@ public class GameStarter : MonoBehaviour
     {
         GameStarted?.Invoke();
         _mainMenuCamera.gameObject.SetActive(false);
+        _gameProcessUI.gameObject.SetActive(true);
     }
 }
