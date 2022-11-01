@@ -5,6 +5,7 @@ using TMPro;
 
 public class ButtonImproveContainer : MonoBehaviour
 {
+    [SerializeField] private ImproveType _improveType;
     [SerializeField] private Button _improveButton;
     [SerializeField] private TextMeshProUGUI _costText;
     [SerializeField] private TextMeshProUGUI _levelText;
@@ -31,6 +32,7 @@ public class ButtonImproveContainer : MonoBehaviour
     private void OnEnable()
     {
         _improveButton.onClick.AddListener(Improve);
+        _indexStep = DataPrefs.GetImprovenes(_improveType);
         CalculateCurrentCost();
     }
     private void OnDisable()
@@ -44,6 +46,7 @@ public class ButtonImproveContainer : MonoBehaviour
             _indexStep++;
             _collectableWallet.Add(-_currentCost);
             CalculateCurrentCost();
+            DataPrefs.SaveImprovenes(_improveType, _indexStep);
         }
     }
     private void CalculateCurrentCost()
