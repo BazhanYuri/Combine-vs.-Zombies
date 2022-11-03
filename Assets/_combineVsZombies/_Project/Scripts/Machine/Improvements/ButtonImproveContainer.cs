@@ -10,6 +10,7 @@ public class ButtonImproveContainer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _costText;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private float _improveIndex;
+    [SerializeField] private ImproveVisuals _improveVisuals;
 
     [SerializeField] private float _cost;
     [SerializeField] private float _costIndex;
@@ -34,6 +35,7 @@ public class ButtonImproveContainer : MonoBehaviour
         _improveButton.onClick.AddListener(Improve);
         _indexStep = DataPrefs.GetImprovenes(_improveType);
         CalculateCurrentCost();
+        _improveVisuals.SetSizeOfVisual(_indexStep);
     }
     private void OnDisable()
     {
@@ -46,6 +48,7 @@ public class ButtonImproveContainer : MonoBehaviour
             _indexStep++;
             _collectableWallet.Add(-_currentCost);
             CalculateCurrentCost();
+            _improveVisuals.ImproveEffect(_indexStep);
             DataPrefs.SaveImprovenes(_improveType, _indexStep);
         }
     }

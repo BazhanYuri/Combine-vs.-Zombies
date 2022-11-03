@@ -28,6 +28,7 @@ public class CollectableWallet : MonoBehaviour
     {
         get
         {
+            return 100000;
             return m_StorageManager.GetCollectable(CollectableType);
         }
 
