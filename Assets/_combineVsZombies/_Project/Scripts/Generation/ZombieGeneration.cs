@@ -83,7 +83,7 @@ public class ZombieGeneration : MonoBehaviour
 
     private int GetRandomZombie()
     {
-        return Random.Range(0, 3);
+        return Random.Range(0, 5);
     }
     private bool ChoosedZombieIsForDistance(int zombieType)
     {

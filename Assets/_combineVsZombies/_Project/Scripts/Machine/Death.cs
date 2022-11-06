@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
+    [SerializeField] private Transform _deadCamera;
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private bool _isCanDead;
     [SerializeField] private Transform _gameProcessUI;
@@ -21,6 +22,7 @@ public class Death : MonoBehaviour
             _gameManager.LevelCompleted();
              _isDead = true;
             _gameProcessUI.gameObject.SetActive(false);
+            _deadCamera.gameObject.SetActive(true);
         }
     }
 }
