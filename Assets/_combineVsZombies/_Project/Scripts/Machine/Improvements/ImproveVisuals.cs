@@ -3,14 +3,23 @@ using DG.Tweening;
 
 public class ImproveVisuals : MonoBehaviour
 {
+    [SerializeField] private GameStarter _gameStarter;
     [SerializeField] private Animator _animator;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     [SerializeField] private Transform _visual;
     [SerializeField] private float _scaleIndex;
 
+    [SerializeField] private Vector3 _standartScale = new Vector3(0.1555351f, 0.1555351f, 0.1555351f);
 
-    private Vector3 _standartScale;
-
+    private void OnEnable()
+    {
+        _gameStarter.GameStarted += MoveToMachine;
+    }
+    private void OnDisable()
+    {
+        _gameStarter.GameStarted -= MoveToMachine;
+    }
     public void SetSizeOfVisual(int improveIndex)
     {
         if (improveIndex > 0)
@@ -22,12 +31,14 @@ public class ImproveVisuals : MonoBehaviour
     public void ImproveEffect(int improveIndex)
     {
         SetSizeOfVisual(improveIndex);
-        _visual.DOPunchScale(Vector3.one * 0.1f, 0.2f * improveIndex, 3);
+        _visual.DOPunchScale(Vector3.one * (0.15f + (_scaleIndex / 5)), 0.5f, 2).SetEase(Ease.InFlash);
     }
-
-
-    private void OnEnable()
+   
+    private void MoveToMachine()
     {
-        _standartScale = _visual.localScale;
+        if (_animator != null)
+        {
+            _animator.SetTrigger("StartMove");
+        }
     }
 }
