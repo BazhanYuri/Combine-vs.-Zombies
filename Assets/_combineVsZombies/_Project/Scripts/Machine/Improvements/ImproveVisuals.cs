@@ -32,6 +32,8 @@ public class ImproveVisuals : MonoBehaviour
     {
         SetSizeOfVisual(improveIndex);
         _visual.DOPunchScale(Vector3.one * (0.15f + (_scaleIndex / 5)), 0.5f, 2).SetEase(Ease.InFlash);
+        
+        _particleSystem.Play();
     }
    
     private void MoveToMachine()
